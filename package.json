@@ -1,0 +1,35 @@
+{
+  "name": "TrackStar",
+  "version": "1.0.0",
+  "description": "Senior Design Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blake Golliday",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "^2.2.33",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "jquery": "*",
+    "serialport": "*",
+    "socket.io": "*",
+    "jspdf": "*",
+    "html2canvas": "*",
+    "multer": "*",
+    "fast-csv": "*"
+  }
+}

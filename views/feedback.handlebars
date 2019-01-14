@@ -1,0 +1,219 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" 
+      href="/feedback">
+      <img src="http://localhost:3000/img/Marquette_mu_small.png" alt="MU" style="width:75px;height:33px;border:0">  
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        
+        
+        
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/users/logout"> Logout</a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<div id="page">
+<button id="id_generate_pdf">Download PDF</button><br>
+<button onclick="buttonClick()">Download CSV</button><br>
+<button onclick="buttonClicked()">Start</button>
+<p>Left Leg: <span id="rightLeg"></span></p><br>
+<p>Right Leg: <span id="leftLeg"></span></p><br>
+
+
+        <div id="chart1" style="width:1400px;height:300px;"></div> 
+        
+</div>
+
+        
+
+        <script>
+        {{# each items }}
+
+        array = [];
+            array1 = [];
+            array2 =[];
+            array3 =[];
+           
+            function buttonClicked(){
+
+
+
+             // open a connection to the serial server:
+            var socket = io.connect('http://localhost:3000', {
+            'forceNew':true
+            });
+            var socket1 = io.connect('http://localhost:3000',{
+            'forceNew':true
+            });
+            
+
+            
+            count = 0;
+             // when you get a serialdata event, do this:
+            socket.on('serialEvent', function (data) {
+                var element = document.getElementById('rightLeg'); 
+                
+
+
+                                                     
+                d2 = [count++,parseFloat(data.value)];
+                d4 = [parseFloat(data.value)];
+
+               
+
+ 
+                if(array.length > 60){array.shift();} 
+                else{array.push(d2);
+
+                array2.push(d4);}
+
+
+                 
+
+
+                
+
+
+
+                
+
+
+               
+ 
+                if(data.value <27){$(element).css("color","blue");} 
+                else{$(element).css("color","red");}
+ 
+                element.innerHTML = data.value;  
+                
+                  
+                
+            });
+
+
+            socket1.on('serialEvent1', function (data) {
+                var element1 = document.getElementById('leftLeg');
+                
+
+                d3 = [count++,parseFloat(data.value)];
+                d5 =[parseFloat(data.value)];
+ 
+                if(array1.length > 60){array1.shift();} 
+                else{
+
+                data.value = data.value ? data.value : 0
+                array1.push(d3);
+                array3.push(d5);
+                }
+
+
+                
+
+                
+
+                    
+               
+ 
+                if(data.value <27){$(element1).css("color","blue");} 
+                else{$(element1).css("color","red");}
+
+          datas = [{ data:array, color: "#003366", label:"Left", lines:{show:true}}
+        ,{ data:array1, color: "#FFCC00", label:"Right", lines:{show:true}}
+        ];
+  options = {legend:{position:"nw"}};
+                
+ 
+                element1.innerHTML = data.value;
+                
+                
+                $.plot($("#chart1"), datas,options);     
+                
+            });    
+
+}
+
+
+
+function buttonClick() {
+  
+
+  var A = [['Left','Right']];
+
+for(var j=1; j<10000; ++j){ 
+    A.push([array2[j],array3[j]]);
+}
+
+var csvRows = [];
+
+for(var i=0, l=A.length; i<l; ++i){
+    csvRows.push(A[i].join(','));
+}
+
+var csvString = csvRows.join("%0A");
+var a         = document.createElement('a');
+a.href        = 'data:attachment/csv,' + csvString;
+a.target      = '_blank';
+a.download    = '{{this.username}}' + Date.now() + '.csv';
+
+document.body.appendChild(a);
+a.click();
+}
+    console.log(jsPDF.API);
+
+var _canvas = null;
+
+$(function() {
+  $("#id_generate_pdf").on("click", function(e) {
+    window.allcanvas = [];
+    var allcontainers = $('[id^="chart1"]');
+
+    allcontainers.each(function(index, elem) {
+      html2canvas($(elem).get(0), {
+        onrendered: function(canvas) {
+          window.allcanvas.push(canvas);
+          if (allcontainers.length == allcanvas.length) {
+            finalpdf();
+          }
+        }
+      });
+    });
+  });
+
+  finalpdf = function() {
+    var doc = new jsPDF('portrait');
+    for (var i = 0; i < allcanvas.length; i++) {
+      var imgData = allcanvas[i].toDataURL('image/jpeg');
+      doc.addImage(imgData, 'JPEG', 10, 10 + i * 140, 165, 135);
+      //if(i != allcanvas.length-1) {
+      //doc.addPage();
+      //}
+    }
+    doc.save('{{this.username}}' + Date.now() +'.pdf');
+
+  };
+}); 
+
+
+            
+            {{/each}}
+            </script>
+
+
+        
+        
+
+
+        

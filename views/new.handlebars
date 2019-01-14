@@ -1,0 +1,100 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/users/home"><img2 src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Marquette_mu_small.png" alt="MU" style="width:75px;height:33px;border:0">  
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/users/logout"> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="/"> Return </a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Add a new Athlete</h1>
+      <div class="row">
+    <div class="col-sm-4" ">
+    <form method="post" action="/athletes/new" enctype="multipart/form-data">
+     <div class="form-group">
+
+      <label>Profile Picture</label>
+    <input type="file"  name= "profileimage" onchange="previewFile()"><br>
+<img src="" height="200" alt="Image preview...">
+    </div>
+      
+       </div>
+       {{#if athlete}}
+        <div class="alert alert-danger">name has taken already try new</div>
+        {{/if}}
+
+        {{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+
+    <div class="col-sm-4">
+    
+   <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="Name" name="username">
+  </div>
+    <div class="form-group">
+  <label>Height(in)</label>
+  <input type="number" class="form-control" placeholder="Height" name="height">
+  </div>
+  <div class="form-group">
+  <label>Weight(lbs)</label>
+  <input type="number" class="form-control" placeholder="Weight" name="weight">
+  </div>
+</div>
+    <div class="col-sm-4">
+    <div class="form-group">
+    <label>Gender</label><br>
+  Male <input type="radio"   name="gender" value="male"> 
+  Female <input type="radio"  name="gender" value="female"> 
+  </div>
+  <div class="form-group">
+    <label>Sport</label><br>
+    Track&Field <input type="radio"   name="sport" value="Track&Field"> 
+  Soccer <input type="radio"  name="sport" value="Soccer">
+  Basketball <input type="radio" name="sport" value="Basketball"> 
+  Cross Country <input type="radio"  name="sport" value="Cross Country">
+  Tennis <input type="radio"  name="sport" value="Tennis">
+  Golf <input type="radio"  name="sport" value="Golf">
+  Lacrosse <input type="radio"  name="sport" value="Lacrosse">
+  Volleyball <input type="radio"  name="sport" value="Volleyball">
+  Staff <input type="radio"  name="sport" value="Staff">
+
+  </div>
+    <div class="form-group">
+  <label>Tib/Fib(in)</label>
+  <input type="number" class="form-control" placeholder="Tib/Fib" name="shank"><br>
+  </div>
+
+  <input type="submit" value="Enter">
+  </form>
+    
+    
+    </div>
+  </div>
+    
+    </div>
+    </div>
+  </div>
+</div>

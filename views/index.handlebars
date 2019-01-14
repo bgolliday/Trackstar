@@ -1,0 +1,99 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" 
+      href="/users/home">
+      <img src="http://localhost:3000/img/Marquette_mu_small.png" alt="MU" style="width:75px;height:33px;border:0">  
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        
+        
+        <li><a href='/users/new'>New Athlete</a></li>
+        <li> <a href='/delete'>Delete Athlete</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/users/logout"> Logout</a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+ <section class="py-5 bg-image-full" style="background-image: url('http://localhost:3000/img/marquettegeneric.jpg');">
+      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+      <div style="height: 200px;"></div>
+    </section>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav text-left">
+      
+      <p class="side">Sport</p>
+   <a href="/get-track">Track&Field</a><br>
+   <a href="/get-basket">Basketball</a><br>
+   <a href="/get-soccer">Soccer</a><br>
+   <a href="/get-xcountry">Cross Country</a><br>
+   <a href="/get-tennis">Tennis</a><br>
+   <a href="/get-golf">Golf</a><br>
+   <a href="/get-lacrosse">Lacrosse</a><br>
+   <a href="/get-volley">Volleyball</a><br>
+   <a href="/get-staff">Staff</a>
+  <br>
+  
+ <p class="side">Gender</p>
+  
+  <a href="/get-male">Male</a><br>
+  <a href="/get-female">Female</a>
+  <br>
+  
+
+  <p class="side">Team</p>
+  <a href="/get-mbb">MBB</a><br>
+  <a href="/get-wbb">WBB</a><br>
+  <a href="/get-msoccer">MSoccer</a><br>
+  <a href="/get-fsoccer">FSoccer</a><br>
+  <a href="/get-mtennis">MTennis</a><br>
+  <a href="/get-ftennis">FTennis</a><br>
+  <a href="/get-mlacrosse">MLacrosse</a><br>
+  <a href="/get-flacrosse">FLacrosse</a><br>
+  <br>
+  
+  <p class="side">Sort By</p>
+  <a href="/get-data">Date</a><br>
+  <a href="/get-alpha">Alphabet</a><br>
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Athletes</h1>
+   <section class="get">
+    
+    
+    <div>
+        {{# each items }}
+            <article class="item">
+                <div><a href="/athlete/{{ this.username }}">{{ this.username }}</a></div>
+                <div> <img src="http://localhost:3000/uploads/{{this.profileimage}}" alt="" style="width:150px;height:150px;border:0">   </div>
+
+
+
+            </article>
+        {{/each}}
+    </div>
+</section>
+
+
+
+
+
+      
+    </div>
+    
+    </div>
+  </div>
+</div>

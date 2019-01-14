@@ -1,0 +1,151 @@
+<html lang="en">
+<head>
+  <title>Coach Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      color:white;
+      background-color: #003366;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #003366;
+      height: 100%;
+    }
+    
+    p.side {
+      
+      color:white;
+      font-Size:20px;
+    }
+    
+    p.side2 {
+      
+      color:white;
+    }
+    
+    div.side {
+      
+      color:white;
+    }
+    
+    h1 {
+      
+      color: #003366;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 15px;
+      
+    }
+    
+    .bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" 
+      href="/public/index.html">
+      <img src="/public/img/IMG_4868.PNG" alt="MU" style="width:75px;height:33px;border:0">  
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        
+        <li><a href="/public/NewAthlete.html">New Athlete</a></li>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+ <section class="py-5 bg-image-full" style="background-image: url('http://i.turner.ncaa.com/dr/ncaa/ncaa7/release/sites/default/files/schools/headers/marquette-generic.jpg');">
+      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+      <div style="height: 200px;"></div>
+    </section>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav text-left">
+      
+      <p class="side">Filters</p>
+      <form>
+        <select>
+  <option value="Select Sport">Select Your School</option>
+  <option value="Track&Field">Track&Field</option>
+  </select>
+  <br>
+  <br>
+  <div class="side">
+  <p class="side">Gender</p>
+  
+  <input type="radio" name="gender"  value="male" > Male<br>
+  <input type="radio" name="gender"  value="female">Female<br>
+  
+  
+  <br>
+  <br>
+  <p class="side">Sort By</p>
+  <input type="checkbox" name="Flagged" value="Flagged"> Flagged 
+  </div>
+   </form>   
+   
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>All Athletes</h1>
+      
+    </div>
+    
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-left">
+  <p>
+  
+    An easier way to keep athletes injury-free 
+    
+    </p>
+</footer>
+
+</body>
+</html>
